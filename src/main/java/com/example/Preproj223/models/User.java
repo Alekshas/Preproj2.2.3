@@ -27,12 +27,12 @@ public class User {
     private String lastname;
 
     @Column
-    private String Email;
+    private String email;
 
     public User(String name, int age, String lastname, String email) {
         this.name = name;
         this.age = age;
         this.lastname = lastname;
-        Email = email;
+        this.email = email;
     }
 }
