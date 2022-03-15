@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/users")
 public class UserController {
 
     private final UserDAO userDAO;
@@ -24,8 +24,8 @@ public class UserController {
 
     @GetMapping()
     public String index(Model model) {
-        model.addAttribute("users", userDAO.getAllUsers());
-        return "users/index";
+       // model.addAttribute("users", userDAO.getAllUsers());
+        return "index";
     }
 
     @GetMapping("/{id}")

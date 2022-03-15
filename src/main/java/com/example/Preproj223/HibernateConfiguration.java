@@ -4,6 +4,7 @@ import java.util.Properties;
 
 import javax.sql.DataSource;
 
+import com.example.Preproj223.models.User;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
 import org.springframework.context.annotation.Bean;
@@ -62,6 +63,7 @@ public class HibernateConfiguration {
         hibernateProperties.put("hibernate.show_sql", SHOW_SQL);
         hibernateProperties.put("hibernate.hbm2ddl.auto", HBM2DDL_AUTO);
         sessionFactory.setHibernateProperties(hibernateProperties);
+        sessionFactory.setAnnotatedClasses(new Class[] { User.class });//че за хуйня...и почему не работает анотация???
 
         return sessionFactory;
     }
