@@ -24,8 +24,8 @@ public class UserController {
 
     @GetMapping()
     public String index(Model model) {
-       // model.addAttribute("users", userDAO.getAllUsers());
-        return "index";
+        model.addAttribute("users", userDAO.getAllUsers());
+        return "users/index";
     }
 
     @GetMapping("/{id}")
@@ -46,7 +46,7 @@ public class UserController {
             return "users/new";
 
         userDAO.save(user);
-        return "redirect:/people";
+        return "redirect:/users";
     }
 
     @GetMapping("/{id}/edit")
@@ -55,7 +55,7 @@ public class UserController {
         return "users/edit";
     }
 
-    @PatchMapping("/{id}")
+    @PostMapping("/{id}")
     public String update(@ModelAttribute("user") @Valid User user, BindingResult bindingResult,
                          @PathVariable("id") int id) {
         if (bindingResult.hasErrors())
@@ -65,8 +65,9 @@ public class UserController {
         return "redirect:/users";
     }
 
-    @DeleteMapping("/{id}")
+    @PostMapping("/delete/{id}")
     public String delete(@PathVariable("id") int id) {
+        System.out.println(id);
         userDAO.delete(id);
         return "redirect:/users";
     }

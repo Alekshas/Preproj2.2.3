@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.persistence.PostRemove;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,23 +23,23 @@ public class UserDAO {
     public void setUserList() {
         try (Session session = sessionFactory.openSession()) {
             Transaction tx1 = session.beginTransaction();
-            session.save(new User("Tom", 24, "Brown", "tom@mail.ru"));
-            session.save(new User("Bob", 52, "Brown", "bob@mail.ru"));
-            session.save(new User("Mike", 18, "Brown", "mike@yahoo.com"));
-            session.save(new User("Katy", 34, "Brown", "katy@gmail.com"));
+            session.save(new User("Tom", "Brown", 24,  "tom@mail.ru"));
+            session.save(new User("Bob", "Brown",52,  "bob@mail.ru"));
+            session.save(new User("Mike", "Brown",18,  "mike@yahoo.com"));
+            session.save(new User("Katy", "Brown",34,  "katy@gmail.com"));
             tx1.commit();
         }
         System.out.println(getAllUsers().toString());
     }
 
-
+    @PreDestroy
     public void cleanUserList() {
         try (Session session = sessionFactory.openSession()) {
             Transaction tx1 = session.beginTransaction();
-            session.delete(new User("Tom", 24, "Brown", "tom@mail.ru"));
-            session.delete(new User("Bob", 52, "Brown", "bob@mail.ru"));
-            session.delete(new User("Mike", 18, "Brown", "mike@yahoo.com"));
-            session.delete(new User("Katy", 34, "Brown", "katy@gmail.com"));
+            session.delete(new User("Tom","Brown", 24,  "tom@mail.ru"));
+            session.delete(new User("Bob", "Brown",52, "bob@mail.ru"));
+            session.delete(new User("Mike", "Brown",18, "mike@yahoo.com"));
+            session.delete(new User("Katy", "Brown",34, "katy@gmail.com"));
             tx1.commit();
         }
     }
@@ -74,7 +75,9 @@ public class UserDAO {
 
     public void delete(int id) {
         try (Session session = sessionFactory.openSession()) {
+            Transaction tx1 = session.beginTransaction();
             session.delete(session.get(User.class, id));
+            tx1.commit();
         }
     }
 

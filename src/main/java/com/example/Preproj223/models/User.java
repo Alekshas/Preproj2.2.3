@@ -15,22 +15,22 @@ import javax.persistence.*;
 public class User {
     @Id
     @Column
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column
     private String name;
 
     @Column
-    private int age;
+    private String lastname;
 
     @Column
-    private String lastname;
+    private int age;
 
     @Column
     private String email;
 
-    public User(String name, int age, String lastname, String email) {
+    public User(String name, String lastname, int age, String email) {
         this.name = name;
         this.age = age;
         this.lastname = lastname;
