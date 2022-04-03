@@ -45,13 +45,12 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<!-- СУКААА ЕБАНАЯ ХУКЙНЯ ТРИ ДНЯ ЕБУЧЕЙ РАБОТЫ ИЗ_ЗА ЭТОЙ ХУЕТЫ -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-			<scope>runtime</scope>
-			<optional>true</optional>
+			<artifactId>spring-boot-starter-security</artifactId>
+			<version>2.3.3.RELEASE</version>
 		</dependency>
+		<!-- СУКААА ЕБАНАЯ ХУКЙНЯ ТРИ ДНЯ ЕБУЧЕЙ РАБОТЫ ИЗ_ЗА ЭТОЙ ХУЕТЫ -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>

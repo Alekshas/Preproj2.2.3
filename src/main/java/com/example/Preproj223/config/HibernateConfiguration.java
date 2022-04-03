@@ -1,4 +1,4 @@
-package com.example.Preproj223;
+package com.example.Preproj223.config;
 
 import java.util.Properties;
 
@@ -64,6 +64,7 @@ public class HibernateConfiguration {
         hibernateProperties.put("hibernate.hbm2ddl.auto", HBM2DDL_AUTO);
         sessionFactory.setHibernateProperties(hibernateProperties);
         sessionFactory.setAnnotatedClasses(new Class[] { User.class });//че за хуйня...и почему не работает анотация???
+
 
         return sessionFactory;
     }
